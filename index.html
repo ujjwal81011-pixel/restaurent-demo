@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>[RESTAURANT NAME] | Modern Fine Dining & Lounge</title>
+  <meta name="description" content="Experience avant-garde culinary craftsmanship at [RESTAURANT NAME]. Michelin-inspired gastronomy, handcrafted cocktails, and panoramic evening ambiance.">
+  <meta name="theme-color" content="#08090C">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:title" content="[RESTAURANT NAME] - Modern Fine Dining">
+  <meta property="og:description" content="A sensory culinary voyage blending modern techniques with timeless flavors.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/hero.jpg">
+
+  <!-- Favicon placeholder (SVG inline) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4AF37'><path d='M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z'/></svg>">
+
+  <!-- Google Fonts: Cinzel & Playfair Display for luxury serif + Outfit & Plus Jakarta Sans for UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="luxury-dark">
+  <!-- Subtle Ambient Background Light Orbs -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+  <!-- Announcement / Live Status Bar -->
+  <aside class="top-announcement" id="topAnnouncement">
+    <div class="container announcement-content">
+      <span class="badge-gold">2026 SELECTION</span>
+      <p class="announcement-text">
+        Now accepting reservations for the <strong>Spring Degustation Menu</strong> by <span>Chef [CHEF NAME]</span>
+      </p>
+      <div class="announcement-actions">
+        <a href="#reservations" class="announcement-link">Reserve Your Table &rarr;</a>
+        <button type="button" class="announcement-close" id="closeAnnouncement" aria-label="Dismiss banner">&times;</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Luxury Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <!-- Brand Logo / Placeholder -->
+      <a href="#" class="brand-logo" id="brandLogoLink">
+        <div class="brand-crest">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="crest-svg" aria-hidden="true">
+            <circle cx="18" cy="18" r="16" stroke="url(#goldGrad)" stroke-width="1.2" stroke-dasharray="2 3"/>
+            <path d="M18 7V29M7 18H29M10 10L26 26M26 10L10 26" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="18" r="5" fill="url(#goldGrad)"/>
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F5E5C9"/>
+                <stop offset="0.5" stop-color="#D4AF37"/>
+                <stop offset="1" stop-color="#8C7335"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title" id="displayRestaurantName">[RESTAURANT NAME]</span>
+          <span class="brand-subtitle">[HAUTE CUISINE & COCKTAIL BAR]</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">Our Story</a></li>
+          <li><a href="#menu" class="nav-link">A La Carte</a></li>
+          <li><a href="#experience" class="nav-link">Experiences</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#reviews" class="nav-link">Reviews</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav CTA & Quick Actions -->
+      <div class="header-actions">
+        <!-- Live Tasting Planner Toggle Button -->
+        <button class="icon-button tasting-cart-btn" id="openTastingDrawer" aria-label="View tasting selections">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-2z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="tasting-count-badge" id="tastingCount">0</span>
+        </button>
+
+        <!-- Reserve CTA Button -->
+        <a href="#reservations" class="btn btn-gold btn-sm hide-on-mobile">
+          <span>Book a Table</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Navigation Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <div class="brand-text">
+        <span class="brand-title">[RESTAURANT NAME]</span>
+        <span class="brand-subtitle">[FINE DINING]</span>
+      </div>
+      <button class="drawer-close" id="closeMobileDrawer" aria-label="Close menu">&times;</button>
+    </div>
+
+    <nav class="drawer-nav">
+      <ul class="drawer-links">
+        <li><a href="#about" class="drawer-link"><span class="drawer-num">01</span> Our Story</a></li>
+        <li><a href="#menu" class="drawer-link"><span class="drawer-num">02</span> Tasting & A La Carte</a></li>
+        <li><a href="#experience" class="drawer-link"><span class="drawer-num">03</span> Private Dining</a></li>
+        <li><a href="#gallery" class="drawer-link"><span class="drawer-num">04</span> Visual Gallery</a></li>
+        <li><a href="#reviews" class="drawer-link"><span class="drawer-num">05</span> Guest Reviews</a></li>
+        <li><a href="#reservations" class="drawer-link"><span class="drawer-num">06</span> Reserve Table</a></li>
+        <li><a href="#contact" class="drawer-link"><span class="drawer-num">07</span> Location & Hours</a></li>
+      </ul>
+    </nav>
+
+    <div class="drawer-footer">
+      <a href="#reservations" class="btn btn-gold btn-full" id="drawerReserveBtn">
+        Book an Evening
+      </a>
+      <div class="drawer-contact-info">
+        <p class="phone">[+1 (555) 890-4321]</p>
+        <p class="hours">[TUE - SUN : 5:00 PM - 11:30 PM]</p>
+      </div>
+    </div>
+  </aside>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-background-wrapper">
+        <img src="images/hero.jpg" alt="[RESTAURANT NAME] luxury dining room with city skyline view" class="hero-bg-img" loading="eager" fetchpriority="high">
+        <div class="hero-gradient-overlay"></div>
+        <div class="hero-grain-overlay"></div>
+      </div>
+
+      <div class="container hero-content-container">
+        <div class="hero-badge animate-fade-in">
+          <span class="sparkle">✦</span>
+          <span>HAUTE GASTRONOMY & SKYLINE VISTAS</span>
+          <span class="sparkle">✦</span>
+        </div>
+
+        <h1 class="hero-headline animate-slide-up">
+          Culinary Masterpieces at <br>
+          <span class="text-gold-gradient font-serif hero-brand-target">[RESTAURANT NAME]</span>
+        </h1>
+
+        <p class="hero-description animate-slide-up-delay">
+          Immerse in an unforgettable sensory expedition curated by <strong>Chef [CHEF NAME]</strong>. 
+          Rare botanical infusions, prime aged cuts, and artisanal wine pairings in the heart of <strong>[CITY NAME]</strong>.
+        </p>
+
+        <!-- Hero CTAs -->
+        <div class="hero-cta-group animate-slide-up-delay-2">
+          <a href="#reservations" class="btn btn-gold btn-lg">
+            <span>Reserve a Table</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#menu" class="btn btn-outline btn-lg">
+            <span>Explore Menu</span>
+          </a>
+        </div>
+
+        <!-- Quick Hero Highlights / Stats -->
+        <div class="hero-stats-bar">
+          <div class="stat-item">
+            <span class="stat-number">3★</span>
+            <span class="stat-label">[MICHELIN RECOGNITION]</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">400+</span>
+            <span class="stat-label">Curated Vintage Cellar</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Sustainable Farm-to-Table</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Pill -->
+      <a href="#about" class="scroll-down-indicator" aria-label="Scroll down to story">
+        <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+        <span class="scroll-text">DISCOVER</span>
+      </a>
+    </section>
+
+    <!-- Quick Live Booking Bar (Instant reservations bar) -->
+    <section class="quick-booking-bar" aria-label="Quick Table Lookup">
+      <div class="container">
+        <div class="quick-bar-card">
+          <div class="quick-field">
+            <label for="quickDate">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Date
+            </label>
+            <input type="date" id="quickDate" class="quick-input" value="2026-10-12">
+          </div>
+
+          <div class="quick-field">
+            <label for="quickGuests">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Guests
+            </label>
+            <select id="quickGuests" class="quick-input">
+              <option value="1">1 Guest (Bar Seating)</option>
+              <option value="2" selected>2 Guests (Intimate Table)</option>
+              <option value="4">4 Guests (Dining Booth)</option>
+              <option value="6">6 Guests (Chef's Table)</option>
+              <option value="8+">8+ Guests (Private Salon)</option>
+            </select>
+          </div>
+
+          <div class="quick-field">
+            <label for="quickTime">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Time
+            </label>
+            <select id="quickTime" class="quick-input">
+              <option value="17:30">5:30 PM (Sunset Tasting)</option>
+              <option value="19:00">7:00 PM (Prime Dinner)</option>
+              <option value="20:30" selected>8:30 PM (Main Seating)</option>
+              <option value="21:45">9:45 PM (Late Evening)</option>
+            </select>
+          </div>
+
+          <div class="quick-submit">
+            <button class="btn btn-gold btn-full" id="quickCheckBtn">
+              <span>Find Table</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story & Philosophy Section -->
+    <section class="section story-section" id="about">
+      <div class="container">
+        <div class="story-grid">
+          <!-- Story Left: Visual Mosaic -->
+          <div class="story-visual-wrap">
+            <div class="story-img-main-card">
+              <img src="images/chef.jpg" alt="Chef [CHEF NAME] garnishing a signature course" class="story-img-main" loading="lazy">
+              <div class="story-img-tag">
+                <span class="tag-title">Chef [CHEF NAME]</span>
+                <span class="tag-sub">Head of Gastronomy</span>
+              </div>
+            </div>
+            <div class="story-floating-card">
+              <div class="floating-metric">15+</div>
+              <div class="floating-text">Years of Precision Fine Dining Heritage</div>
+            </div>
+          </div>
+
+          <!-- Story Right: Philosophy & Text -->
+          <div class="story-content-wrap">
+            <div class="section-tag">THE PHILOSOPHY</div>
+            <h2 class="section-heading">
+              Where Fire, Foraged Flora, <br>
+              &amp; Artistry Meet
+            </h2>
+            <p class="story-lead">
+              At <strong class="hero-brand-target">[RESTAURANT NAME]</strong>, every dish is an intimate dialogue between time-honored artisanal heritage and futuristic culinary invention.
+            </p>
+            <p class="story-body">
+              Led by <em>Chef [CHEF NAME]</em>, our kitchen partners directly with biodynamic heirloom growers, hyper-local foraging cooperatives, and sustainable fisheries. Each evening unfolds as an orchestrated journey designed to provoke your senses and ignite memory.
+            </p>
+
+            <!-- Key pillars -->
+            <div class="philosophy-pillars">
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <div class="pillar-info">
+                  <h4>Sustainably Sourced</h4>
+                  <p>100% trace-to-origin organic and regeneratively grown produce.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div class="pillar-info">
+                  <h4>Modern Alchemy</h4>
+                  <p>Open hearth charcoal flames alongside molecular vacuum infusers.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="story-quote">
+              <blockquote>
+                "Cooking is not merely nourishment; it is an emotional sculpture that disappears in moments yet remains remembered for a lifetime."
+              </blockquote>
+              <cite>— Chef [CHEF NAME], Executive Culinary Director</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Menu Section -->
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-tag">EPICUREAN REPERTOIRE</div>
+          <h2 class="section-heading">Curated Tasting &amp; A La Carte</h2>
+          <p class="section-subheading">
+            Select dietary preferences or filter by course. Click any item to explore ingredient provenance and pairing notes.
+          </p>
+        </div>
+
+        <!-- Menu Filter Controls (Mobile-friendly horizontal scroll) -->
+        <div class="menu-controls-wrapper">
+          <div class="category-pills" id="categoryTabs" role="tablist" aria-label="Menu category filters">
+            <button class="pill-btn active" data-category="all" role="tab" aria-selected="true">
+              All Courses
+            </button>
+            <button class="pill-btn" data-category="starters" role="tab" aria-selected="false">
+              Starters &amp; Crudo
+            </button>
+            <button class="pill-btn" data-category="mains" role="tab" aria-selected="false">
+              Signature Mains
+            </button>
+            <button class="pill-btn" data-category="steaks" role="tab" aria-selected="false">
+              Woodfire &amp; Wagyu
+            </button>
+            <button class="pill-btn" data-category="desserts" role="tab" aria-selected="false">
+              Desserts
+            </button>
+            <button class="pill-btn" data-category="cocktails" role="tab" aria-selected="false">
+              Mixology &amp; Wine
+            </button>
+          </div>
+
+          <!-- Quick Search & Dietary Badges Bar -->
+          <div class="menu-search-dietary-bar">
+            <div class="search-input-box">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="menuSearchInput" placeholder="Search dish, truffle, wagyu, smoke..." aria-label="Search menu items">
+              <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" style="display:none;">&times;</button>
+            </div>
+
+            <div class="dietary-filter-group" aria-label="Dietary filters">
+              <label class="filter-chip">
+                <input type="checkbox" value="chef" class="diet-checkbox">
+                <span>★ Chef's Signature</span>
+              </label>
+              <label class="filter-chip">
+                <input type="checkbox" value="vegetarian" class="diet-checkbox">
+                <span>🌱 Vegetarian</span>
+              </label>
+              <label class="filter-chip">
+                <input type="checkbox" value="gluten-free" class="diet-checkbox">
+                <span>🌾 Gluten-Free</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Grid Container (Populated dynamically & responsive) -->
+        <div class="menu-grid" id="menuItemsGrid">
+          <!-- Dynamically generated menu cards will be rendered here by app.js -->
+        </div>
+
+        <!-- Menu Bottom Note -->
+        <div class="menu-footer-callout">
+          <div class="callout-inner">
+            <div class="callout-icon">🍷</div>
+            <div class="callout-text">
+              <h4>Grand Tasting Degustation (7-Courses)</h4>
+              <p>Experience the definitive journey with optional Grand Cru sommelier wine pairing. Available Tuesday through Sunday.</p>
+            </div>
+            <a href="#reservations" class="btn btn-outline btn-sm">Reserve Tasting Menu</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Experiences / Private Dining Section -->
+    <section class="section experiences-section" id="experience">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">EXCLUSIVE AMBIANCE</div>
+          <h2 class="section-heading">Signature Dining Spaces</h2>
+          <p class="section-subheading">
+            Whether celebrating an anniversary, closing a high-stakes partnership, or gathering with loved ones.
+          </p>
+        </div>
+
+        <div class="experiences-grid">
+          <!-- Card 1 -->
+          <div class="exp-card">
+            <div class="exp-media">
+              <img src="images/hero.jpg" alt="Skyline Dining Room" class="exp-img" loading="lazy">
+              <span class="exp-badge">Panoramic Vista</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-title">The Grand Skyline Salon</h3>
+              <p class="exp-desc">
+                Dramatic floor-to-ceiling vistas overlooking the illuminated evening city skyline. Velvet booth seating with acoustic privacy.
+              </p>
+              <ul class="exp-features">
+                <li>Accommodates: 2 – 6 Guests</li>
+                <li>Ambient jazz &amp; soft golden lighting</li>
+                <li>Full A La Carte &amp; Degustation</li>
+              </ul>
+              <button class="btn btn-sm btn-outline exp-book-btn" data-seating="Skyline View">Book This Space</button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="exp-card highlight-card">
+            <div class="exp-media">
+              <img src="images/chef.jpg" alt="Chef's Interactive Counter" class="exp-img" loading="lazy">
+              <span class="exp-badge gold-badge">Most Exclusive</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-title">The Chef's Omakase Counter</h3>
+              <p class="exp-desc">
+                Front-row seating right against the open-flame hearth. Watch Chef [CHEF NAME] plate every course with culinary commentary.
+              </p>
+              <ul class="exp-features">
+                <li>Intimate 8-seat counter only</li>
+                <li>Exclusive off-menu experimental courses</li>
+                <li>Direct dialogue with the culinary brigade</li>
+              </ul>
+              <button class="btn btn-sm btn-gold exp-book-btn" data-seating="Chef's Table">Reserve Counter</button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="exp-card">
+            <div class="exp-media">
+              <img src="images/cocktail.jpg" alt="The Obsidian Cocktail Lounge" class="exp-img" loading="lazy">
+              <span class="exp-badge">Cocktail &amp; Cellar</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-title">The Obsidian Speakeasy Lounge</h3>
+              <p class="exp-desc">
+                Rich emerald velvet, dark granite, and smoking mixology rituals. Perfect for pre-dinner aperitifs or midnight digestifs.
+              </p>
+              <ul class="exp-features">
+                <li>Rare spirits &amp; smoking crystal glassware</li>
+                <li>Oyster &amp; caviar small plates</li>
+                <li>Walk-ins welcome &amp; reserved high-tops</li>
+              </ul>
+              <button class="btn btn-sm btn-outline exp-book-btn" data-seating="Cocktail Lounge">Reserve Lounge</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Dish & Atmosphere Showcase Gallery -->
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">VISUAL POETRY</div>
+          <h2 class="section-heading">Moments Captured at [RESTAURANT NAME]</h2>
+          <p class="section-subheading">A glimpse into our dining room, craft cocktails, and kitchen craft.</p>
+        </div>
+
+        <div class="gallery-mosaic">
+          <div class="gallery-item item-large gallery-trigger" data-title="Evening Skyline Dining Room" data-caption="Panoramic evening atmosphere overlooking the glittering cityscape." data-img="images/hero.jpg">
+            <img src="images/hero.jpg" alt="Dining room interior" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>Evening Skyline Room</h4>
+                <p>Architectural Ambiance</p>
+              </div>
+              <span class="gallery-zoom-icon">⊕</span>
+            </div>
+          </div>
+
+          <div class="gallery-item gallery-trigger" data-title="Prime Wagyu Tenderloin with Gold Leaf" data-caption="Wood-fired A5 Wagyu paired with black winter truffle and roasted baby heritage vegetables." data-img="images/wagyu.jpg">
+            <img src="images/wagyu.jpg" alt="Woodfire Wagyu Beef" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>A5 Wagyu &amp; Truffle</h4>
+                <p>Haute Gastronomy</p>
+              </div>
+              <span class="gallery-zoom-icon">⊕</span>
+            </div>
+          </div>
+
+          <div class="gallery-item gallery-trigger" data-title="The Smoked Amber Old Fashioned" data-caption="Aged bourbon, flamed orange oil, dehydrated citrus, and smoked cedar aura." data-img="images/cocktail.jpg">
+            <img src="images/cocktail.jpg" alt="Artisan Smoked Cocktail" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>Smoked Amber Elixir</h4>
+                <p>Artisanal Mixology</p>
+              </div>
+              <span class="gallery-zoom-icon">⊕</span>
+            </div>
+          </div>
+
+          <div class="gallery-item gallery-trigger" data-title="Dark Chocolate &amp; Raspberry Entremet" data-caption="Sculpted single-origin dark chocolate sphere with wild raspberry coulis and edible violas." data-img="images/dessert.jpg">
+            <img src="images/dessert.jpg" alt="Fine dining dessert" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>Chocolate Noir Entremet</h4>
+                <p>Haute Patisserie</p>
+              </div>
+              <span class="gallery-zoom-icon">⊕</span>
+            </div>
+          </div>
+
+          <div class="gallery-item item-wide gallery-trigger" data-title="The Kitchen Brigade in Action" data-caption="Chef [CHEF NAME] and the culinary team finishing tasting courses at the pass." data-img="images/chef.jpg">
+            <img src="images/chef.jpg" alt="Chef plating dishes in kitchen" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>The Culinary Brigade</h4>
+                <p>Precision Plating</p>
+              </div>
+              <span class="gallery-zoom-icon">⊕</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guest Testimonials / Critic Reviews -->
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">ACCLAIM &amp; PRAISE</div>
+          <h2 class="section-heading">Voices of Our Distinguished Guests</h2>
+          <p class="section-subheading">From culinary critics to anniversary celebrations.</p>
+        </div>
+
+        <div class="reviews-slider-container">
+          <div class="reviews-track" id="reviewsTrack">
+            <!-- Review 1 -->
+            <div class="review-card active">
+              <div class="review-stars">★★★★★</div>
+              <blockquote class="review-text">
+                "An electrifying symphony of flavors. The A5 Wagyu tenderloin with truffle reduction was quite frankly the finest dish I tasted anywhere in [CITY NAME] this year. The skyline view is simply breathtaking."
+              </blockquote>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">JL</div>
+                <div class="reviewer-details">
+                  <div class="reviewer-name">[GUEST NAME: Julian Laurent]</div>
+                  <div class="reviewer-title">Food &amp; Wine Critic, [MAGAZINE NAME]</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <blockquote class="review-text">
+                "We celebrated our 10th anniversary at [RESTAURANT NAME] and it exceeded every dream. From the smoked cocktails at the bar to the personalized dessert greeting, Chef [CHEF NAME]'s team treated us like royalty."
+              </blockquote>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">ER</div>
+                <div class="reviewer-details">
+                  <div class="reviewer-name">[GUEST NAME: Elena &amp; Richard V.]</div>
+                  <div class="reviewer-title">Verified Table Guests</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <blockquote class="review-text">
+                "The 7-course degustation with the sommelier pairing is pure theater. Every pour comes with an evocative tale. Truly on par with 3-star dining in Paris and Tokyo."
+              </blockquote>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">MS</div>
+                <div class="reviewer-details">
+                  <div class="reviewer-name">[GUEST NAME: Marcus Sterling]</div>
+                  <div class="reviewer-title">Global Gastronomy Society</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="slider-controls">
+            <button class="slider-btn prev-btn" id="prevReviewBtn" aria-label="Previous review">&#8592;</button>
+            <div class="slider-dots" id="reviewDots">
+              <button class="dot-btn active" data-index="0" aria-label="Review 1"></button>
+              <button class="dot-btn" data-index="1" aria-label="Review 2"></button>
+              <button class="dot-btn" data-index="2" aria-label="Review 3"></button>
+            </div>
+            <button class="slider-btn next-btn" id="nextReviewBtn" aria-label="Next review">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table Reservation Booking Section -->
+    <section class="section reservation-section" id="reservations">
+      <div class="container">
+        <div class="reservation-card-wrapper">
+          <div class="reservation-grid">
+            <!-- Reservation Form -->
+            <div class="reservation-form-pane">
+              <div class="section-tag">TABLE INQUIRY</div>
+              <h2 class="form-title">Reserve Your Table</h2>
+              <p class="form-subtitle">
+                Tables are released 30 days in advance. For parties larger than 8, please contact our private events team.
+              </p>
+
+              <form id="reservationForm" class="reservation-form" novalidate>
+                <!-- Row 1: Guests & Seating Preference -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="resGuests">Number of Guests *</label>
+                    <div class="guest-counter-input">
+                      <button type="button" class="counter-btn" id="guestMinus" aria-label="Decrease guests">-</button>
+                      <input type="number" id="resGuests" name="guests" min="1" max="12" value="2" readonly>
+                      <button type="button" class="counter-btn" id="guestPlus" aria-label="Increase guests">+</button>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="resSeating">Seating Preference *</label>
+                    <select id="resSeating" name="seating" required class="luxury-select">
+                      <option value="Skyline View">Skyline Dining Room (Recommended)</option>
+                      <option value="Velvet Booth">Velvet Intimate Booth</option>
+                      <option value="Chef's Table">Chef's Open Counter</option>
+                      <option value="Cocktail Lounge">Obsidian Bar Lounge</option>
+                      <option value="Private Salon">Private Dining Salon</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Row 2: Date & Time selection -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="resDate">Reservation Date *</label>
+                    <input type="date" id="resDate" name="date" required class="luxury-input">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Preferred Time Slot *</label>
+                    <div class="time-chips-group" id="timeSlotsGroup">
+                      <button type="button" class="time-chip" data-time="17:30">5:30 PM</button>
+                      <button type="button" class="time-chip" data-time="18:30">6:30 PM</button>
+                      <button type="button" class="time-chip active" data-time="19:30">7:30 PM</button>
+                      <button type="button" class="time-chip" data-time="20:30">8:30 PM</button>
+                      <button type="button" class="time-chip" data-time="21:15">9:15 PM</button>
+                    </div>
+                    <input type="hidden" id="selectedTimeInput" name="time" value="19:30">
+                  </div>
+                </div>
+
+                <!-- Row 3: Guest Details -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="resName">Full Name *</label>
+                    <input type="text" id="resName" name="name" placeholder="[e.g. John Doe]" required class="luxury-input">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="resPhone">Phone Number *</label>
+                    <input type="tel" id="resPhone" name="phone" placeholder="[e.g. +1 555-123-4567]" required class="luxury-input">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="resEmail">Email Address (for instant confirmation) *</label>
+                  <input type="email" id="resEmail" name="email" placeholder="[e.g. guest@example.com]" required class="luxury-input">
+                </div>
+
+                <!-- Special Requests -->
+                <div class="form-group">
+                  <label for="resNotes">Special Requests / Occasion</label>
+                  <textarea id="resNotes" name="notes" rows="2" placeholder="Birthday, anniversary, severe allergies, quiet corner request..." class="luxury-textarea"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-gold btn-full btn-lg" id="submitResBtn">
+                  <span>Confirm Table Reservation</span>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </button>
+                <p class="reservation-policy-text">
+                  🔒 Zero booking fees. You may modify or cancel up to 6 hours before reservation time.
+                </p>
+              </form>
+            </div>
+
+            <!-- Reservation Sidebar Info -->
+            <div class="reservation-info-pane">
+              <div class="info-card-inner">
+                <div class="info-crest">
+                  <span>★ ★ ★</span>
+                </div>
+                <h3>Reservation Guidelines</h3>
+                <ul class="guidelines-list">
+                  <li>
+                    <strong>Dress Code:</strong> Smart Elegant / Business Casual. We kindly request no sportswear or beach attire.
+                  </li>
+                  <li>
+                    <strong>Grace Period:</strong> We hold reserved tables for 15 minutes past scheduled seating.
+                  </li>
+                  <li>
+                    <strong>Dietary Care:</strong> Please indicate severe allergens in advance so our culinary team can prepare tailored courses.
+                  </li>
+                  <li>
+                    <strong>Corkage Policy:</strong> Standard corkage is available for rare cellared bottles ($50 per 750ml).
+                  </li>
+                </ul>
+
+                <div class="direct-concierge-box">
+                  <div class="concierge-tag">VIP &amp; PRIVATE SALON DIRECT</div>
+                  <p class="concierge-phone">[+1 (555) 890-4321]</p>
+                  <p class="concierge-email">[concierge@restaurantdomain.com]</p>
+                  <div class="concierge-hours">Daily Concierge: 11:00 AM – 11:00 PM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location, Hours & Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Info Column -->
+          <div class="contact-info-card">
+            <div class="section-tag">LOCATION &amp; HOURS</div>
+            <h2 class="section-heading">Visit [RESTAURANT NAME]</h2>
+            
+            <div class="info-block">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="info-details">
+                <h4>Address</h4>
+                <p class="address-text">[124 LUXURY SKYLINE AVENUE, 42ND FLOOR]</p>
+                <p class="city-text">[DOWNTOWN METROPOLIS, NY 10001, USA]</p>
+                <span class="valet-badge">✨ Complimentary Valet Parking Available</span>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="info-details">
+                <h4>Hours of Gastronomy</h4>
+                <div class="hours-row">
+                  <span>Tuesday – Thursday:</span>
+                  <strong>5:00 PM – 11:00 PM</strong>
+                </div>
+                <div class="hours-row">
+                  <span>Friday – Saturday:</span>
+                  <strong>5:00 PM – Midnight</strong>
+                </div>
+                <div class="hours-row">
+                  <span>Sunday Dinner:</span>
+                  <strong>4:30 PM – 10:30 PM</strong>
+                </div>
+                <div class="hours-row closed">
+                  <span>Monday:</span>
+                  <em>Closed for Culinary R&amp;D</em>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="info-details">
+                <h4>Direct Communications</h4>
+                <p>Telephone: <a href="tel:+15558904321" class="gold-link">[+1 (555) 890-4321]</a></p>
+                <p>Email: <a href="mailto:info@restaurantdomain.com" class="gold-link">[info@restaurantdomain.com]</a></p>
+                <p>Press &amp; Media: <a href="mailto:press@restaurantdomain.com" class="gold-link">[press@restaurantdomain.com]</a></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stylized Map / Architectural Location Visualizer -->
+          <div class="map-visual-card">
+            <div class="map-canvas-mock">
+              <!-- Interactive Modern Map Placeholder with dark theme styling -->
+              <div class="map-grid-lines"></div>
+              <div class="map-radar-pulse"></div>
+              <div class="map-pin">
+                <div class="pin-pulse"></div>
+                <div class="pin-marker">
+                  <span class="marker-star">✦</span>
+                </div>
+                <div class="pin-card">
+                  <strong>[RESTAURANT NAME]</strong>
+                  <span>Floor 42, Skyline Tower</span>
+                </div>
+              </div>
+
+              <!-- Map Overlay Controls -->
+              <div class="map-overlay-info">
+                <div class="transit-info">
+                  <span class="transit-tag">Metro</span> [GRAND CENTRAL STATION / 3 MIN WALK]
+                </div>
+                <div class="transit-info">
+                  <span class="transit-tag">Parking</span> [PRIVATE UNDERGROUND VALET ON 5TH ST]
+                </div>
+                <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline get-directions-btn">
+                  Open Google Maps &rarr;
+                </a>
+              </div>
+            </div>
+
+            <!-- VIP Newsletter Box -->
+            <div class="newsletter-card">
+              <h4>Join the Private Dining Guild</h4>
+              <p>Receive priority reservation access, seasonal white truffle releases, and invitations to intimate wine dinners.</p>
+              <form id="newsletterForm" class="newsletter-form">
+                <div class="newsletter-input-group">
+                  <input type="email" id="newsletterEmail" placeholder="Enter your email address..." required class="luxury-input">
+                  <button type="submit" class="btn btn-gold">
+                    <span>Subscribe</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="section faq-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">FREQUENT INQUIRIES</div>
+          <h2 class="section-heading">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-accordion-wrap">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Do you accommodate vegetarian, vegan, and celiac dietary restrictions?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, absolutely. Our culinary team under Chef [CHEF NAME] prepares dedicated multi-course vegetarian and gluten-free tasting menus. We kindly request notification at the time of booking so ingredients can be prepared with zero cross-contamination.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Is there a dress code policy at [RESTAURANT NAME]?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                We adhere to an elegant smart-casual aesthetic. Collared shirts, tailored jackets, and evening dresses are encouraged. We do not permit athletic gym apparel, flip-flops, or baseball hats in the main dining rooms.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can I book private rooms for corporate events or weddings?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Our Private Salon seats up to 24 guests, and the Grand Skyline Lounge can be exclusively privatized for buyouts up to 120 guests with customized wine pairings and bespoke menus.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How far in advance can I book a table?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Online reservations open exactly 30 calendar days in advance at 10:00 AM local time. For exclusive celebrations or Chef's Counter buyouts, inquiries may be submitted 60 days ahead via our concierge.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-col brand-col">
+          <div class="brand-text">
+            <span class="brand-title hero-brand-target">[RESTAURANT NAME]</span>
+            <span class="brand-subtitle">[MODERN HAUTE GASTRONOMY]</span>
+          </div>
+          <p class="footer-desc">
+            A luminous culinary sanctuary dedicated to unhurried pleasure, rare terroirs, and unforgettable contemporary dining.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+            <a href="#" class="social-icon" aria-label="Facebook">FB</a>
+            <a href="#" class="social-icon" aria-label="Michelin Guide">M★</a>
+            <a href="#" class="social-icon" aria-label="TripAdvisor">TA</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Exploration</h4>
+          <ul class="footer-links">
+            <li><a href="#about">The Philosophy &amp; Chef</a></li>
+            <li><a href="#menu">A La Carte Repertoire</a></li>
+            <li><a href="#experience">Private Skyline Salon</a></li>
+            <li><a href="#gallery">Visual Atmosphere</a></li>
+            <li><a href="#reviews">Critics &amp; Accolades</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Experiences -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Experiences</h4>
+          <ul class="footer-links">
+            <li><a href="#reservations">Grand Tasting Degustation</a></li>
+            <li><a href="#experience">The Chef's Omakase Bar</a></li>
+            <li><a href="#experience">Obsidian Mixology Lounge</a></li>
+            <li><a href="#reservations">Private Dining Buyouts</a></li>
+            <li><a href="#reservations">Gift Cards &amp; Experiences</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Location -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Contact &amp; Concierge</h4>
+          <p class="footer-info">[124 LUXURY SKYLINE AVENUE, 42ND FLOOR]</p>
+          <p class="footer-info">[DOWNTOWN METROPOLIS, NY 10001]</p>
+          <p class="footer-info phone-link"><a href="tel:+15558904321">[+1 (555) 890-4321]</a></p>
+          <p class="footer-info email-link"><a href="mailto:concierge@restaurantdomain.com">[concierge@restaurantdomain.com]</a></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 <span class="hero-brand-target">[RESTAURANT NAME]</span>. All Rights Reserved. Crafted with modern culinary aesthetics.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <span class="sep">/</span>
+          <a href="#">Terms of Dining</a>
+          <span class="sep">/</span>
+          <a href="#">Allergen Notice</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Mobile Quick Action Bar (Only shows on mobile screens) -->
+  <aside class="mobile-floating-bar" aria-label="Mobile quick actions">
+    <div class="floating-bar-inner">
+      <a href="tel:+15558904321" class="floating-btn floating-call" aria-label="Call restaurant">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>Call</span>
+      </a>
+      <a href="#menu" class="floating-btn floating-menu" aria-label="View menu">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Menu</span>
+      </a>
+      <a href="#reservations" class="floating-btn floating-book btn-gold" aria-label="Book a table">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>Reserve Table</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Interactive Dish Quick View Modal -->
+  <div class="luxury-modal" id="dishModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalDishTitle">
+    <div class="modal-backdrop" id="dishModalBackdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="closeDishModal" aria-label="Close dialog">&times;</button>
+      <div class="modal-body" id="modalDishBody">
+        <!-- Content injected dynamically via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Tasting Selections Drawer -->
+  <div class="luxury-modal" id="tastingDrawer" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="tastingBackdrop"></div>
+    <div class="tasting-drawer-panel">
+      <div class="drawer-panel-header">
+        <div class="panel-title-wrap">
+          <h3>Your Evening Tasting Wishlist</h3>
+          <p>Curate dishes you would like to sample tonight.</p>
+        </div>
+        <button class="modal-close-btn" id="closeTastingDrawer" aria-label="Close tasting drawer">&times;</button>
+      </div>
+
+      <div class="tasting-items-list" id="tastingItemsList">
+        <!-- Populated via app.js -->
+      </div>
+
+      <div class="tasting-drawer-footer">
+        <div class="tasting-summary-row">
+          <span>Selected Courses:</span>
+          <strong id="tastingCourseCount">0 Items</strong>
+        </div>
+        <div class="tasting-summary-row estimated-row">
+          <span>Estimated Total:</span>
+          <strong class="text-gold" id="tastingEstimatedTotal">$0</strong>
+        </div>
+        <p class="tasting-hint">Present this list to your sommelier or server upon arrival.</p>
+        <a href="#reservations" class="btn btn-gold btn-full" id="tastingProceedResBtn">Proceed to Book Table</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox for Image Gallery -->
+  <div class="lightbox-modal" id="galleryLightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="closeLightbox" aria-label="Close zoom preview">&times;</button>
+      <img src="" alt="Enlarged view" id="lightboxImg">
+      <div class="lightbox-caption" id="lightboxCaption">
+        <h4 id="lightboxTitle"></h4>
+        <p id="lightboxDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Placeholder Customizer Tool (Bottom Corner Widget) -->
+  <div class="placeholder-customizer" id="customizerWidget">
+    <button class="customizer-toggle-btn" id="customizerToggle" aria-label="Live Edit Restaurant Name and Placeholders">
+      <span class="customizer-icon">⚙️</span>
+      <span class="customizer-text">Customize [PLACEHOLDERS]</span>
+    </button>
+    <div class="customizer-card" id="customizerCard">
+      <div class="customizer-header">
+        <h4>⚡ Live Name Customizer</h4>
+        <button class="customizer-close" id="closeCustomizer">&times;</button>
+      </div>
+      <p class="customizer-hint">Type any name below to preview how it renders in real-time across the entire design:</p>
+      
+      <div class="customizer-field">
+        <label for="inputRestaurantName">Restaurant Name:</label>
+        <input type="text" id="inputRestaurantName" value="[RESTAURANT NAME]" placeholder="e.g. Lumina Noir / Saffron & Silk">
+      </div>
+
+      <div class="customizer-field">
+        <label for="inputChefName">Head Chef Name:</label>
+        <input type="text" id="inputChefName" value="[CHEF NAME]" placeholder="e.g. Jean-Luc Vance">
+      </div>
+
+      <div class="customizer-field">
+        <label for="inputCityName">City / Location:</label>
+        <input type="text" id="inputCityName" value="[CITY NAME]" placeholder="e.g. Manhattan, New York">
+      </div>
+
+      <div class="customizer-actions">
+        <button class="btn btn-gold btn-sm btn-full" id="applyCustomizerBtn">Apply to Website</button>
+        <button class="btn btn-outline btn-sm btn-full" id="resetCustomizerBtn">Reset to Default Placeholders</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
